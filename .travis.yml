@@ -6,9 +6,9 @@ addons:
     packages:
     - libboost-test-dev
 script:
-- cmake .
-- cmake --build .
-- cmake --build . --target test
+- cmake . -DCMAKE_BUILD_TYPE=RELEASE
+- cmake --build .                 
+- cmake --build . --target test   
 - cmake --build . --target package
 deploy:
   provider: script

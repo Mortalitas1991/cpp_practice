@@ -1,4 +1,8 @@
-cmake_minimum_required(VERSION 3.13.4)
+# -DCMAKE_CXX_COMPILER=g++
+# clang-tidy functions.cpp 
+# -fdump-record-layouts - class hierarchy
+
+cmake_minimum_required(VERSION 3.12.4)
 
 project(cpp_practice VERSION 0.0.0$ENV{TRAVIS_BUILD_NUMBER} LANGUAGES C CXX)
 
@@ -8,7 +12,13 @@ find_package(Boost REQUIRED)
 include_directories(${Boost_INCLUDE_DIRS})
 
 #version
-#configure_file(version.h.in ${PROJECT_SOURCE_DIR}/version.h)
+option(VERSION "Enable Version" ON)
+if(VERSION_ENABLE)
+    message(${VERSION_ENABLE})
+    set(VERSION "${PROJECT_VERSION_PATCH}")
+    configure_file(${PROJECT_SOURCE_DIR}/version.h.in ${PROJECT_SOURCE_DIR}/version.h @ONLY)
+endif()
+
 
 #main
 add_executable(program_run ${PROJECT_SOURCE_DIR}/main.cpp ${PROJECT_SOURCE_DIR}/version.cpp)
@@ -39,11 +49,11 @@ set_target_properties(
         CXX_STANDARD 17
         CXX_STANDARD_REQUIRED ON)
 
-if(CMAKE_BUILD_TYPE EQUAL "Release")
+if(CMAKE_BUILD_TYPE EQUAL "RELEASE")
     set(CMAKE_CXX_FLAGS_RELEASE "-O2")
 else()
-    # -DCMAKE_BUILD_TYPE=Debug --build
-    set(CMAKE_BUILD_TYPE "Debug")
+    # cmake .. -DCMAKE_BUILD_TYPE=DEBUG
+    set(CMAKE_BUILD_TYPE "DEBUG")
     set_target_properties(
     	program_run
         ip_filter_run 
@@ -73,4 +83,4 @@ include(CPack)
 
 #tests
 enable_testing()
-add_test(test_version_run ${PROJECT_SOURCE_DIR}/test_version)
+add_test(NAME test_version COMMAND test_version_run)

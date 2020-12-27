@@ -1,3 +1,4 @@
 #pragma once
 
-#cmakedefine PROJECT_VERSION_PATCH @PROJECT_VERSION_PATCH@
+#cmakedefine VERSION_ENABLE 
+#cmakedefine VERSION @PROJECT_VERSION_PATCH@
