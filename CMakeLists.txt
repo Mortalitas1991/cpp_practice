@@ -11,14 +11,8 @@ find_package(Boost REQUIRED)
 # export BOOST_ROOT=/usr/local/${VERSION}
 include_directories(${Boost_INCLUDE_DIRS})
 
-#version
-option(VERSION "Enable Version" ON)
-if(VERSION_ENABLE)
-    message(${VERSION_ENABLE})
-    set(VERSION "${PROJECT_VERSION_PATCH}")
-    configure_file(${PROJECT_SOURCE_DIR}/version.h.in ${PROJECT_SOURCE_DIR}/version.h @ONLY)
-endif()
-
+#generate version
+configure_file(${PROJECT_SOURCE_DIR}/version.h.in ${PROJECT_SOURCE_DIR}/version.h)
 
 #main
 add_executable(program_run ${PROJECT_SOURCE_DIR}/main.cpp ${PROJECT_SOURCE_DIR}/version.cpp)

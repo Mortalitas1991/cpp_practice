@@ -1,5 +1,5 @@
 #include "./version.h"
 
-int GetVersion() {
-	return VERSION;
+const char* GetVersion() {
+	return PROJECT_VERSION;
 }

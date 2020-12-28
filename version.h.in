@@ -1,4 +1,5 @@
 #pragma once
 
-#cmakedefine VERSION_ENABLE 
-#cmakedefine VERSION @PROJECT_VERSION_PATCH@
+const char* GetVersion();
+
+#cmakedefine PROJECT_VERSION "${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH}"

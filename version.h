@@ -1,6 +1,5 @@
 #pragma once
 
-int GetVersion();
+const char* GetVersion();
 
-#define VERSION 1
-
+#define PROJECT_VERSION "0.0.0"
