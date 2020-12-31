@@ -1,5 +1,6 @@
-#include "./version.h"
+#include "version.h"
 
-const char* GetVersion() {
+const char* GetVersion()
+{
 	return PROJECT_VERSION;
 }

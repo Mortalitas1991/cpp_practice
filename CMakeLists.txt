@@ -15,16 +15,13 @@ include_directories(${Boost_INCLUDE_DIRS})
 configure_file(${PROJECT_SOURCE_DIR}/version.h.in ${PROJECT_SOURCE_DIR}/version.h)
 
 #main
-add_executable(program_run ${PROJECT_SOURCE_DIR}/main.cpp ${PROJECT_SOURCE_DIR}/version.cpp)
-add_library(version ${PROJECT_SOURCE_DIR}/version.cpp)
-
-#ip filter
-add_executable(ip_filter_run ${PROJECT_SOURCE_DIR}/ip_filter/main.cpp)
-add_library(ip_filter ${PROJECT_SOURCE_DIR}/ip_filter/ip_filter.cpp)
+set(progrum_srt
+    ${PROJECT_SOURCE_DIR}/main.cpp 
+    ${PROJECT_SOURCE_DIR}/version.cpp)
+add_executable(program_run ${progrum_srt})
 
 #test: version
-add_executable(test_version_run ${PROJECT_SOURCE_DIR}/test_version.cpp)
-
+add_executable(test_version_run ${PROJECT_SOURCE_DIR}/test_version.cpp ${PROJECT_SOURCE_DIR}/version.cpp)
 set_target_properties(test_version_run 
 	PROPERTIES
     COMPILE_DEFINITIONS BOOST_TEST_DYN_LINK
@@ -35,13 +32,9 @@ target_link_libraries(test_version_run
     ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY}
 )
 
+#ip filter
+add_subdirectory(ip_filter)
 
-set_target_properties(
-    	program_run
-        ip_filter_run
-        PROPERTIES 
-        CXX_STANDARD 17
-        CXX_STANDARD_REQUIRED ON)
 
 if(CMAKE_BUILD_TYPE EQUAL "RELEASE")
     set(CMAKE_CXX_FLAGS_RELEASE "-O2")
@@ -50,11 +43,12 @@ else()
     set(CMAKE_BUILD_TYPE "DEBUG")
     set_target_properties(
     	program_run
-        ip_filter_run 
         PROPERTIES
+        CXX_STANDARD 17
+        CXX_STANDARD_REQUIRED ON
         COMPILE_OPTIONS "-g;-O0;-Wall;-Wextra;-Werror;-Wpedantic;")
 
-    target_link_libraries(ip_filter_run PRIVATE -fsanitize=undefined -fsanitize=address -fno-omit-frame-pointer)
+    target_link_libraries(program_run PRIVATE -fsanitize=undefined -fsanitize=address -fno-omit-frame-pointer)
 endif()
 
 message("[+]BUILD_TYPE: " ${CMAKE_BUILD_TYPE})

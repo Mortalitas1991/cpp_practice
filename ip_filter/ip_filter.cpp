@@ -1,39 +1,45 @@
-#include <vector>
-#include <string>
-// ("",  '.') -> [""]
-// ("11", '.') -> ["11"]
-// ("..", '.') -> ["", "", ""]
-// ("11.", '.') -> ["11", ""]
-// (".11", '.') -> ["", "11"]
-// ("11.22", '.') -> ["11", "22"]
-// std::vector<std::string> split(const std::string &str, char d)
-// {
-//     std::vector<std::string> r;
-//     std::string::size_type start = 0;
-//     std::string::size_type stop = str.find_first_of(d);
-//     while(stop != std::string::npos)
-//     {
-//         r.push_back(str.substr(start, stop - start));
+#include "./ip_filter.h"
 
-//         start = stop + 1;
-//         stop = str.find_first_of(d, start);
-//     }
+#include <algorithm>
+#include <iostream>
 
-//     r.push_back(str.substr(start));
-
-//     return r;
-// }
-
-std::string split(const std::string &str, char d)
+std::string get_ip(const std::string& line)
 {
-    std::string result;
-    for (auto i : str) {
-        if (i == d) {
-            break;
-        }
+	std::string ip;
+	for (auto c : line) {
+		if (c == ' ' || c == '\t') return ip;
+		ip += c;
+	}
 
-        result += i;
-    }
+	return ip;
+}
 
-    return result;
+std::vector<std::string> get_ips(std::fstream& in)
+{
+	std::vector<std::string> pool;
+	for (std::string line; std::getline(in, line);) {
+		pool.push_back(get_ip(line));
+	}
+
+	pool.shrink_to_fit();
+	return pool;
+}
+
+bool ips_compare(const std::string& a, const std::string& b)
+{
+	std::cout << a << " :: " << b << std::endl;
+	int f = std::stoi(a);
+	int s = std::stoi(b);
+	if (f != s) {
+		return f >= s;
+	}
+
+	auto first_dot = a.find_first_of('.');
+	auto second_dot = b.find_first_of('.');
+
+	if (first_dot == std::string::npos || second_dot == std::string::npos) {
+		return f >= s;
+	}
+
+	return ips_compare(a.substr(first_dot + 1), b.substr(second_dot + 1));
 }
