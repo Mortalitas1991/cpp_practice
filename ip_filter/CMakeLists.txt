@@ -7,7 +7,13 @@ set(src
 	${PROJECT_SOURCE_DIR}/ip_filter.cpp)
 
 add_executable(ip_filter_run ${src})
-target_link_libraries(ip_filter_run PRIVATE "-lstdc++fs")
+if (CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
+    target_link_libraries(ip_filter_run PRIVATE "-lc++fs")
+endif()
+
+if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+    target_link_libraries(ip_filter_run PRIVATE "-lstdc++fs")
+endif()
 
 #test: ip_filter
 add_executable(test_ip_filter_run ${PROJECT_SOURCE_DIR}/test_ip_filter.cpp ${PROJECT_SOURCE_DIR}/ip_filter.cpp)

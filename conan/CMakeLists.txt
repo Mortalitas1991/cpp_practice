@@ -7,7 +7,15 @@ conan_basic_setup()
 
 set(src ${PROJECT_SOURCE_DIR}/main.cpp ${PROJECT_SOURCE_DIR}/conan.cpp)
 add_executable(conan_run ${src})
-target_link_libraries(conan_run PRIVATE "-lstdc++fs")
+
+if (CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
+    target_link_libraries(conan_run PRIVATE "-lc++fs")
+endif()
+
+if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+    target_link_libraries(conan_run PRIVATE "-lstdc++fs")
+endif()
+
 
 #test: conan
 # add_executable(test_conan_run ${PROJECT_SOURCE_DIR}/test_conan.cpp)
