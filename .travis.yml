@@ -1,6 +1,10 @@
 dist: Bionic
 language: cpp
 compiler: gcc
+sources:
+    - ubuntu-toolchain-r-test
+      packages:
+        - g++-8
 addons:
   apt:
     packages:
