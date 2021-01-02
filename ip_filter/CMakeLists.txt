@@ -25,6 +25,7 @@ set_target_properties(test_ip_filter_run
 target_link_libraries(test_ip_filter_run
     ${Boost_LIBRARIES}
     ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY}
+    PRIVATE "-lstdc++fs"
 )
 
 if(CMAKE_BUILD_TYPE EQUAL "RELEASE")

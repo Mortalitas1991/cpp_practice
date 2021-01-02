@@ -3,7 +3,7 @@
     build_type=Release
     compiler=gcc
     compiler.libcxx=libstdc++11
-    compiler.version=7
+    compiler.version=7.4
     os=Linux
 
 [requires]
@@ -17,7 +17,7 @@
     build_type=Release
     compiler=gcc
     compiler.libcxx=libstdc++11
-    compiler.version=7
+    compiler.version=7.4
     os=Linux
     os_build=Linux
 

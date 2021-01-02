@@ -16,19 +16,6 @@ if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
     target_link_libraries(conan_run PRIVATE "-lstdc++fs")
 endif()
 
-
-#test: conan
-# add_executable(test_conan_run ${PROJECT_SOURCE_DIR}/test_conan.cpp)
-# set_target_properties(test_conan_run 
-#     PROPERTIES
-#     COMPILE_DEFINITIONS BOOST_TEST_DYN_LINK
-#     INCLUDE_DIRECTORIES ${Boost_INCLUDE_DIRS}
-# )
-# target_link_libraries(test_conan_run
-#     ${Boost_LIBRARIES}
-#     ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY}
-# )
-
 if(CMAKE_BUILD_TYPE EQUAL "RELEASE")
     set(CMAKE_CXX_FLAGS_RELEASE "-O2")
 else()
