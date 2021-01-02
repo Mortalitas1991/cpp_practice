@@ -1,2 +1,7 @@
+/conan/conan.lock
+/conan/conanbuildinfo.txt
+/conan/conanbuildinfo.cmake
+/conan/conaninfo.txt
+/conan/graph_info.json
 /build
 version.h
