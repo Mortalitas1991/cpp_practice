@@ -3,7 +3,7 @@
     build_type=Release
     compiler=clang
     compiler.libcxx=libstdc++
-    compiler.version=8
+    compiler.version=7.0
     os=Linux
 
 [requires]
@@ -18,7 +18,7 @@
     build_type=Release
     compiler=clang
     compiler.libcxx=libstdc++
-    compiler.version=8
+    compiler.version=7.0
     os=Linux
     os_build=Linux
 
