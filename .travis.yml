@@ -1,14 +1,12 @@
 dist: Bionic
 language: cpp
 compiler: gcc
-sources:
-    - ubuntu-toolchain-r-test
-      packages:
-        - g++-8
 addons:
   apt:
     packages:
     - libboost-test-dev
+    - gcc-8
+    - g++-8
 script:
 - cmake . -DCMAKE_BUILD_TYPE=RELEASE
 - cmake --build .                 
