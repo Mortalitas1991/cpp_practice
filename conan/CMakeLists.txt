@@ -1,0 +1,41 @@
+cmake_minimum_required(VERSION 3.12.4)
+
+project(conan LANGUAGES C CXX)
+
+include(${PROJECT_SOURCE_DIR}/conanbuildinfo.cmake)
+conan_basic_setup()
+
+set(src ${PROJECT_SOURCE_DIR}/main.cpp ${PROJECT_SOURCE_DIR}/conan.cpp)
+add_executable(conan_run ${src})
+target_link_libraries(conan_run PRIVATE "-lstdc++fs")
+
+#test: conan
+# add_executable(test_conan_run ${PROJECT_SOURCE_DIR}/test_conan.cpp)
+# set_target_properties(test_conan_run 
+#     PROPERTIES
+#     COMPILE_DEFINITIONS BOOST_TEST_DYN_LINK
+#     INCLUDE_DIRECTORIES ${Boost_INCLUDE_DIRS}
+# )
+# target_link_libraries(test_conan_run
+#     ${Boost_LIBRARIES}
+#     ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY}
+# )
+
+if(CMAKE_BUILD_TYPE EQUAL "RELEASE")
+    set(CMAKE_CXX_FLAGS_RELEASE "-O2")
+else()
+    # cmake .. -DCMAKE_BUILD_TYPE=DEBUG
+    set(CMAKE_BUILD_TYPE "DEBUG")
+    set_target_properties(
+    	conan_run
+        PROPERTIES
+        CXX_STANDARD 17
+        CXX_STANDARD_REQUIRED ON
+        COMPILE_OPTIONS "-g;-O0;-Wall;-Wextra;-Werror;-Wpedantic;")
+
+    target_link_libraries(conan_run PRIVATE -fsanitize=undefined -fsanitize=address -fno-omit-frame-pointer)
+endif()
+
+#tests
+enable_testing()
+add_test(NAME test_conan COMMAND test_conan_run)

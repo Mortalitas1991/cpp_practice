@@ -7,6 +7,7 @@ set(src
 	${PROJECT_SOURCE_DIR}/ip_filter.cpp)
 
 add_executable(ip_filter_run ${src})
+target_link_libraries(ip_filter_run PRIVATE "-lstdc++fs")
 
 #test: ip_filter
 add_executable(test_ip_filter_run ${PROJECT_SOURCE_DIR}/test_ip_filter.cpp ${PROJECT_SOURCE_DIR}/ip_filter.cpp)

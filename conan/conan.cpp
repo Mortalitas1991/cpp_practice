@@ -1,6 +1,4 @@
-#include "./ip_filter.h"
-
-#include <algorithm>
+#include "conan.h"
 
 std::string get_ip(const std::string& line)
 {

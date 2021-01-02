@@ -34,6 +34,8 @@ target_link_libraries(test_version_run
 
 #ip filter
 add_subdirectory(ip_filter)
+#conan
+add_subdirectory(conan)
 
 
 if(CMAKE_BUILD_TYPE EQUAL "RELEASE")
