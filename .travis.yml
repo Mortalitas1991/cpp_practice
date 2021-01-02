@@ -1,8 +1,6 @@
-dist: xenial
+dist: Bionic
 language: cpp
-compiler:
-  - gcc-8.0
-  - clang-7.0
+compiler: gcc
 addons:
   apt:
     packages:
