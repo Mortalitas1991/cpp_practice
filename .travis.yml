@@ -20,7 +20,7 @@ install:
 # Automatic detection of your arch, compiler, etc.
   - conan user
 script:
-- conan install .
+- conan install ./conan/
 - cmake . -DCMAKE_BUILD_TYPE=RELEASE
 - cmake --build .                 
 - cmake --build . --target test   
