@@ -30,10 +30,3 @@ deploy:
   skip_cleanup: true
   script:
   - curl -f -T cpp_practice-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb -Mortalitas1991:$BINTRAY_API_KEY "https://dl.bintray.com/mortalitas1991/cpp-deb/$TRAVIS_BUILD_NUMBER/cmake-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb;deb_distribution=xenial;deb_component=main;deb_architecture=amd64;publish=1"
-# Install conan
-  - pip install conan
-# Automatic detection of your arch, compiler, etc.
-  - conan user
-script:
-# Download dependencies and build project
-  - conan install .
