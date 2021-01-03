@@ -9,11 +9,11 @@ compiler: gcc
 addons:
   apt:
     sources:
-      - ubuntu-toolchain-r-test
-      packages:
-        - libboost-test-dev
-        - gcc-8
-        - g++-8
+    - ubuntu-toolchain-r-test
+    packages:
+    - libboost-test-dev
+    - gcc-8
+    - g++-8
 script:
 - cmake . -DCMAKE_BUILD_TYPE=RELEASE
 - cmake --build .                 
