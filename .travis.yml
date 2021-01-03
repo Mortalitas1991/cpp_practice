@@ -21,6 +21,7 @@ install:
   - conan user
 script:
 - conan install ./conan
+- conan profile update settings.compiler.libcxx=libstdc++11 default
 - cmake . -DCMAKE_BUILD_TYPE=RELEASE
 - cmake --build .                 
 - cmake --build . --target test   
