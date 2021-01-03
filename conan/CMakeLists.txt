@@ -30,7 +30,3 @@ else()
 
     target_link_libraries(conan_run PRIVATE -fsanitize=undefined -fsanitize=address -fno-omit-frame-pointer)
 endif()
-
-#tests
-enable_testing()
-add_test(NAME test_conan COMMAND test_conan_run)
