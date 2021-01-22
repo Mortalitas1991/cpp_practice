@@ -38,13 +38,13 @@ endmacro()
 #################
 ###  RANGE-V3
 #################
-set(CONAN_RANGE-V3_ROOT "/home/lightmare/.conan/data/range-v3/0.11.0/_/_/package/5ab84d6acfe1f23c4fae0ab88f26e3a396351ac9")
-set(CONAN_INCLUDE_DIRS_RANGE-V3 "/home/lightmare/.conan/data/range-v3/0.11.0/_/_/package/5ab84d6acfe1f23c4fae0ab88f26e3a396351ac9/include")
+set(CONAN_RANGE-V3_ROOT "/home/den/.conan/data/range-v3/0.11.0/_/_/package/5ab84d6acfe1f23c4fae0ab88f26e3a396351ac9")
+set(CONAN_INCLUDE_DIRS_RANGE-V3 "/home/den/.conan/data/range-v3/0.11.0/_/_/package/5ab84d6acfe1f23c4fae0ab88f26e3a396351ac9/include")
 set(CONAN_LIB_DIRS_RANGE-V3 )
 set(CONAN_BIN_DIRS_RANGE-V3 )
 set(CONAN_RES_DIRS_RANGE-V3 )
 set(CONAN_SRC_DIRS_RANGE-V3 )
-set(CONAN_BUILD_DIRS_RANGE-V3 "/home/lightmare/.conan/data/range-v3/0.11.0/_/_/package/5ab84d6acfe1f23c4fae0ab88f26e3a396351ac9/")
+set(CONAN_BUILD_DIRS_RANGE-V3 "/home/den/.conan/data/range-v3/0.11.0/_/_/package/5ab84d6acfe1f23c4fae0ab88f26e3a396351ac9/")
 set(CONAN_FRAMEWORK_DIRS_RANGE-V3 )
 set(CONAN_LIBS_RANGE-V3 )
 set(CONAN_PKG_LIBS_RANGE-V3 )
@@ -79,12 +79,13 @@ set(CONAN_PACKAGE_NAME None)
 set(CONAN_PACKAGE_VERSION None)
 
 set(CONAN_SETTINGS_ARCH "x86_64")
+set(CONAN_SETTINGS_ARCH_BUILD "x86_64")
 set(CONAN_SETTINGS_BUILD_TYPE "Release")
-set(CONAN_SETTINGS_COMPILER "gcc")
-set(CONAN_SETTINGS_COMPILER_LIBCXX "libstdc++11")
-set(CONAN_SETTINGS_COMPILER_VERSION "7.5")
-set(CONAN_SETTINGS_OS "Linux")
-set(CONAN_SETTINGS_OS_BUILD "Linux")
+set(CONAN_SETTINGS_COMPILER "clang")
+set(CONAN_SETTINGS_COMPILER_LIBCXX "libc++")
+set(CONAN_SETTINGS_COMPILER_VERSION "10")
+set(CONAN_SETTINGS_OS "FreeBSD")
+set(CONAN_SETTINGS_OS_BUILD "FreeBSD")
 
 set(CONAN_DEPENDENCIES range-v3)
 # Storing original command line args (CMake helper) flags
@@ -94,7 +95,7 @@ set(CONAN_CMD_SHARED_LINKER_FLAGS ${CONAN_SHARED_LINKER_FLAGS})
 set(CONAN_CMD_C_FLAGS ${CONAN_C_FLAGS})
 # Defining accumulated conan variables for all deps
 
-set(CONAN_INCLUDE_DIRS "/home/lightmare/.conan/data/range-v3/0.11.0/_/_/package/5ab84d6acfe1f23c4fae0ab88f26e3a396351ac9/include" ${CONAN_INCLUDE_DIRS})
+set(CONAN_INCLUDE_DIRS "/home/den/.conan/data/range-v3/0.11.0/_/_/package/5ab84d6acfe1f23c4fae0ab88f26e3a396351ac9/include" ${CONAN_INCLUDE_DIRS})
 set(CONAN_LIB_DIRS  ${CONAN_LIB_DIRS})
 set(CONAN_BIN_DIRS  ${CONAN_BIN_DIRS})
 set(CONAN_RES_DIRS  ${CONAN_RES_DIRS})
@@ -106,7 +107,7 @@ set(CONAN_FRAMEWORKS  ${CONAN_FRAMEWORKS})
 set(CONAN_FRAMEWORKS_FOUND "")  # Will be filled later
 set(CONAN_DEFINES  ${CONAN_DEFINES})
 set(CONAN_BUILD_MODULES_PATHS  ${CONAN_BUILD_MODULES_PATHS})
-set(CONAN_CMAKE_MODULE_PATH "/home/lightmare/.conan/data/range-v3/0.11.0/_/_/package/5ab84d6acfe1f23c4fae0ab88f26e3a396351ac9/" ${CONAN_CMAKE_MODULE_PATH})
+set(CONAN_CMAKE_MODULE_PATH "/home/den/.conan/data/range-v3/0.11.0/_/_/package/5ab84d6acfe1f23c4fae0ab88f26e3a396351ac9/" ${CONAN_CMAKE_MODULE_PATH})
 
 set(CONAN_CXX_FLAGS " ${CONAN_CXX_FLAGS}")
 set(CONAN_SHARED_LINKER_FLAGS " ${CONAN_SHARED_LINKER_FLAGS}")

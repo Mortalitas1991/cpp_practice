@@ -11,6 +11,7 @@ find_package(Boost REQUIRED)
 # export BOOST_ROOT=/usr/local/${VERSION}
 include_directories(${Boost_INCLUDE_DIRS})
 
+
 #generate version
 configure_file(${PROJECT_SOURCE_DIR}/version.h.in ${PROJECT_SOURCE_DIR}/version.h)
 

@@ -24,20 +24,30 @@ std::vector<std::string> get_ips(std::fstream& in)
 	return pool;
 }
 
+uint32_t ip_to_uint(const std::string& ip) {
+    int a = 0;
+    int b = 0;
+    int c = 0;
+    int d = 0;
+    uint32_t addr = 0;
+
+    const std::string copy = ip;
+
+    if (sscanf(copy.c_str(), "%d.%d.%d.%d", &a, &b, &c, &d) != 4)
+        return 0;
+
+    addr = a << 24;
+    addr |= b << 16;
+    addr |= c << 8;
+    addr |= d;
+    
+    return addr;
+}
+
 bool ips_compare(const std::string& a, const std::string& b)
 {
-	int f = std::stoi(a);
-	int s = std::stoi(b);
-	if (f != s) {
-		return f >= s;
-	}
+	uint32_t first = ip_to_uint(a);	
+	uint32_t second = ip_to_uint(b);
 
-	auto first_dot = a.find_first_of('.');
-	auto second_dot = b.find_first_of('.');
-
-	if (first_dot == std::string::npos || second_dot == std::string::npos) {
-		return f >= s;
-	}
-
-	return ips_compare(a.substr(first_dot + 1), b.substr(second_dot + 1));
+	return first > second;
 }
